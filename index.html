@@ -4,109 +4,514 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hugo Parada</title>
+  <meta name="description" content="Academic homepage of Hugo Parada, postdoctoral researcher in applied mathematics, control of PDEs, dispersive equations, and numerical analysis." />
   <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #5b6472;
+      --line: #d9deea;
+      --accent: #1d4ed8;
+      --accent-soft: #e8efff;
+      --maxw: 980px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f7f7f7;
-      color: #222;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
     }
-    .container {
-      max-width: 900px;
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(246, 247, 251, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      max-width: var(--maxw);
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    header {
-      text-align: center;
-      padding: 50px 20px 30px;
-      background: white;
-      border-bottom: 1px solid #ddd;
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .nav a {
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 56px 20px 28px;
+    }
+
+    .hero-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      background: linear-gradient(135deg, #ffffff 0%, #f9fbff 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 40px 32px;
+      box-shadow: 0 10px 30px rgba(20, 30, 60, 0.06);
+    }
+
     h1 {
-      margin: 0;
-      font-size: 2.2rem;
+      margin: 0 0 10px 0;
+      font-size: 2.3rem;
+      line-height: 1.15;
     }
-    h2 {
-      margin-top: 40px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
-    }
+
     .subtitle {
-      color: #666;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-links {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px 56px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-top: 20px;
+      box-shadow: 0 6px 18px rgba(20, 30, 60, 0.04);
+    }
+
+    h2 {
+      margin: 0 0 18px 0;
+      font-size: 1.45rem;
+    }
+
+    h3 {
+      margin: 24px 0 12px 0;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul {
+      margin: 10px 0 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card {
+      background: #fbfcff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-top: 10px;
     }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-    a { color: #0b57d0; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { padding-left: 20px; }
-    footer {
-      text-align: center;
-      color: #777;
+
+    .tag {
+      background: var(--accent-soft);
+      color: #2447a7;
+      border-radius: 999px;
+      padding: 7px 11px;
       font-size: 0.9rem;
-      padding: 30px 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    footer {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px 44px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      h1 { font-size: 1.9rem; }
+      .grid { grid-template-columns: 1fr; }
+      .hero-inner, section { padding: 22px 18px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Hugo Parada</h1>
-    <p class="subtitle">
-      Postdoctoral researcher in applied mathematics<br>
-      Control of PDEs, dispersive equations, and numerical analysis
-    </p>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Hugo Parada</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#advising">Advising</a>
+        <a href="#collaborators">Collaborators</a>
+        <a href="#outreach">Outreach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Hugo Parada</h1>
+      <p class="subtitle">
+        Postdoctoral researcher in applied mathematics<br>
+        Control of PDEs, dispersive equations, stabilization, and numerical analysis
+      </p>
+
+      <div class="hero-links">
+        <a class="btn primary" href="#contact">Contact</a>
+        <a class="btn" href="https://sites.google.com/view/hugo-parada" target="_blank" rel="noopener noreferrer">Previous Google Site</a>
+        <a class="btn" href="https://iecl.univ-lorraine.fr/recherche/equipes-inria/sphinx/" target="_blank" rel="noopener noreferrer">SPHINX Team</a>
+        <a class="btn" href="https://theses.hal.science/tel-04235934" target="_blank" rel="noopener noreferrer">PhD Thesis</a>
+      </div>
+    </div>
   </header>
 
-  <div class="container">
-    <section class="card">
+  <main>
+    <section id="about">
       <h2>About</h2>
       <p>
-        Welcome to my academic webpage. I work in control theory for partial differential equations,
-        with interests in dispersive systems, stabilization, observability, and related numerical questions.
+        Hello, my name is <strong>Hugo Parada Ríos</strong>. I was born in San Bernardo, Chile.
+        Since October 2025, I have been a postdoctoral researcher at <strong>Inria Nancy – Grand Est</strong>,
+        within the <strong>SPHINX</strong> team, affiliated with the
+        <strong>Institut Élie Cartan de Lorraine (IECL)</strong>.
       </p>
+      <p>
+        From October 2023 to September 2025, I was a postdoctoral researcher at the
+        <strong>Institut de Mathématiques de Toulouse</strong>. I defended my PhD thesis in 2023 at the
+        <strong>Laboratoire Jean Kuntzmann</strong> in Grenoble, under the supervision of
+        <strong>Emmanuelle Crépeau</strong> and <strong>Christophe Prieur</strong>.
+      </p>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Current position</h3>
+          <p class="muted">
+            Postdoc, Inria Nancy – Grand Est<br>
+            Institut Élie Cartan de Lorraine<br>
+            Funded by ANR project QuBiCCS
+          </p>
+        </div>
+        <div class="mini-card">
+          <h3>Previous position</h3>
+          <p class="muted">
+            Postdoc, Institut de Mathématiques de Toulouse<br>
+            2023–2025<br>
+            Funded by CIMI LabEx
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section class="card">
+    <section id="research">
       <h2>Research</h2>
+      <p>
+        My research centers on the study of partial differential equations with a particular focus on
+        control theory, including well-posedness, controllability, observability, and stabilization.
+      </p>
+
+      <div class="tag-list">
+        <span class="tag">PDE control</span>
+        <span class="tag">KdV and dispersive systems</span>
+        <span class="tag">Coupled systems</span>
+        <span class="tag">Graphs and networks</span>
+        <span class="tag">Delays and saturation</span>
+        <span class="tag">Geometric control</span>
+        <span class="tag">Numerical methods</span>
+        <span class="tag">Plasma physics</span>
+      </div>
+
+      <h3>Main interests</h3>
       <ul>
-        <li>Control and stabilization of PDEs</li>
-        <li>Dispersive equations and bilinear control</li>
-        <li>Observability and Carleman estimates</li>
-        <li>Numerical analysis for kinetic equations</li>
+        <li>Control problems for PDEs on graphs and network structures.</li>
+        <li>Stabilization of PDEs in the presence of delay, saturation, or disturbances.</li>
+        <li>Controllability and stabilization of coupled systems.</li>
+        <li>Geometric control and qualitative properties of evolution equations.</li>
+        <li>Numerical methods for kinetic equations and models from plasma physics.</li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>Publications & Preprints</h2>
+    <section id="publications">
+      <h2>Selected Publications and Preprints</h2>
+
+      <h3>Preprints</h3>
+      <ul>
+        <li>
+          2026. R. Buffe, A. Duca, H. Parada,
+          <em>Bilinear controllability for the linear KdV–Schrödinger equation</em>. Submitted.
+        </li>
+        <li>
+          2025. C. Negulescu, H. Parada,
+          <em>Spectral scheme for an energetic Fokker–Planck equation with kappa-distribution steady states</em>. Submitted.
+        </li>
+        <li>
+          2025. P. Guzmán, A. Huerta, H. Parada,
+          <em>Rapid stabilization for a wave equation with boundary disturbance</em>. Submitted.
+        </li>
+        <li>
+          2025. P. Guzmán, F. Labra, H. Parada,
+          <em>Feedback stabilization of some fourth-order nonlinear parabolic equations with saturated controls</em>. Submitted.
+        </li>
+        <li>
+          2025. R. de A. Capistrano-Filho, H. Parada, J. S. da Silva,
+          <em>A nonhomogeneous boundary-value problem for the nonlinear KdV equation on star graphs</em>. Submitted.
+        </li>
+        <li>
+          2025. C. Calle, P. Guzmán, H. Parada,
+          <em>Rapid stabilization of the heat equation with localized disturbance</em>. Submitted.
+        </li>
+        <li>
+          2025. H. Parada, N. Vanspranghe,
+          <em>Optimal stabilization rate for the wave equation with hyperbolic boundary condition</em>. Submitted.
+        </li>
+      </ul>
+
+      <h3>Journal articles</h3>
+      <ul>
+        <li>
+          2025. R. de A. Capistrano-Filho, H. Parada, J. S. da Silva,
+          <em>An analysis of the entire functions associated with the operator of the KdV equation</em>.
+        </li>
+        <li>
+          2025. H. Parada,
+          <em>Observer-based exponential stabilization of fractional heat equation</em>,
+          <em>Applied Mathematics &amp; Optimization</em>.
+        </li>
+        <li>
+          2025. G. Arias, H. Parada,
+          <em>Boundary stabilization of a class of coupled reaction-diffusion system with one control</em>,
+          <em>SIAM Journal on Control and Optimization</em>.
+        </li>
+        <li>
+          2025. S. Majumdar, H. Parada,
+          <em>Stabilization of Kawahara equation with input saturation and saturated boundary feedback</em>,
+          <em>Mathematical Control and Related Fields</em>.
+        </li>
+        <li>
+          2024. E. Crépeau, H. Parada, C. Prieur,
+          <em>Stability of KdV equation on a network with bounded and unbounded lengths</em>,
+          <em>ESAIM: COCV</em>.
+        </li>
+        <li>
+          2024. H. Parada,
+          <em>Null controllability of KdV equation in a star-shaped network</em>,
+          <em>Evolution Equations and Control Theory</em>.
+        </li>
+        <li>
+          2023. H. Parada, C. Timmimoun, J. Valein,
+          <em>Stability results for the KdV equation with time-varying delay</em>,
+          <em>Systems &amp; Control Letters</em>.
+        </li>
+        <li>
+          2022. E. Crépeau, H. Parada, C. Prieur,
+          <em>Global well-posedness of the KdV equation on a star shaped network and stabilization with saturated controllers</em>,
+          <em>SIAM Journal on Control and Optimization</em>.
+        </li>
+        <li>
+          2022. E. Crépeau, H. Parada, C. Prieur,
+          <em>Delayed stabilization of KdV equation on a star shaped network</em>,
+          <em>Mathematics of Control, Signals, and Systems</em>.
+        </li>
+      </ul>
+
+      <h3>Conference papers</h3>
+      <ul>
+        <li>
+          2023. E. Crépeau, H. Parada, C. Prieur,
+          <em>Stability of linear KdV equation in a star shaped network with bounded and unbounded lengths</em>,
+          62nd IEEE Conference on Decision and Control.
+        </li>
+        <li>
+          2022. H. Parada,
+          <em>Stability analysis of a Korteweg–de Vries equation with saturated boundary feedback</em>,
+          IFAC CPDE 2022.
+        </li>
+      </ul>
+
+      <h3>Thesis</h3>
       <p>
-        Add here links to HAL, arXiv, Google Scholar, or a PDF list.
+        <a href="https://theses.hal.science/tel-04235934" target="_blank" rel="noopener noreferrer">
+          Control and Stabilization of PDE on Networks
+        </a>
+        — PhD thesis defended on July 5, 2023.
       </p>
     </section>
 
-    <section class="card">
-      <h2>Teaching</h2>
-      <p>
-        Add here your teaching activities, courses, or lecture notes.
-      </p>
+    <section id="advising">
+      <h2>Student Advising</h2>
+
+      <h3>In progress</h3>
+      <ul>
+        <li>
+          Christian Calle — PhD in Mathematics, Universidad Federico Santa María.
+          Rapid stabilization of PDEs. Co-direction with Patricio Guzmán.
+        </li>
+        <li>
+          Renata Córdova — M.Sc. in Mathematics, Universidad Federico Santa María.
+          Co-direction with Patricio Guzmán.
+        </li>
+      </ul>
+
+      <h3>Past students</h3>
+      <ul>
+        <li>
+          Felipe Labra — Mathematical Engineering, Universidad Federico Santa María.
+          Feedback stabilization of the linear Kuramoto–Sivashinsky equation with saturated controls.
+        </li>
+        <li>
+          Yan Larrouquere — M1 internship, Université Paul Sabatier.
+          Study of the Fokker–Planck equation.
+        </li>
+        <li>
+          Agustín Huerta — M.Sc. in Mathematics, Universidad Federico Santa María.
+          Rapid stabilization of the wave equation with boundary disturbance.
+        </li>
+      </ul>
     </section>
 
-    <section class="card">
+    <section id="collaborators">
+      <h2>Collaborators</h2>
+      <p class="muted">A non-exhaustive list of collaborators and close research contacts.</p>
+      <ul>
+        <li>Emmanuelle Crépeau</li>
+        <li>Christophe Prieur</li>
+        <li>Julie Valein</li>
+        <li>Chanaz Timmimoun</li>
+        <li>Subrata Majumdar</li>
+        <li>Gonzalo Arias</li>
+        <li>Eduardo Cerpa</li>
+        <li>Kirsten Morris</li>
+        <li>Franck Boyer</li>
+        <li>Patricio Guzmán</li>
+        <li>Agustín Huerta</li>
+        <li>Felipe Labra</li>
+        <li>Roberto Capistrano-Filho</li>
+        <li>Jandeilson Santos da Silva</li>
+        <li>Christian Calle</li>
+        <li>Nicolas Vanspranghe</li>
+        <li>Claudia Negulescu</li>
+      </ul>
+    </section>
+
+    <section id="outreach">
+      <h2>Juggling and Outreach</h2>
+      <p>
+        I have been juggling since childhood. One topic that still interests me deeply is the
+        interaction between mathematics and juggling. During my youth and university years, I gave
+        several workshops on this topic for high-school students, undergraduate students, and the general public.
+      </p>
+
+      <h3>Videos</h3>
+      <ul>
+        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Just Ball's</a></li>
+        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Jugglinares – What I Say</a></li>
+        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">IJA – Tricks of the Month</a></li>
+        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Top 20 Chilean jugglers, 2013</a></li>
+      </ul>
+
+      <h3>Talks and notes</h3>
+      <ul>
+        <li>
+          2019 — <em>Matemáticas y Malabares</em> workshop for secondary-school students,
+          6th–7th STEAM Camp, USM.
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
       <h2>Contact</h2>
       <p>
-        Email: your.email@domain.com<br>
-        GitHub: <a href="https://github.com/hparada">github.com/hparada</a>
+        <strong>Email:</strong>
+        <a href="mailto:hugo.parada.mat@gmail.com">hugo.parada.mat@gmail.com</a>,
+        <a href="mailto:hugo.parada@inria.fr">hugo.parada@inria.fr</a>
+      </p>
+      <p>
+        <strong>Address:</strong><br>
+        IECL – Site de Nancy<br>
+        Faculté des sciences et Technologies<br>
+        Campus, Boulevard des Aiguillettes<br>
+        54506 Vandœuvre-lès-Nancy
       </p>
     </section>
+  </main>
 
-    <footer>
-      © 2026 Hugo Parada
-    </footer>
-  </div>
+  <footer>
+    Last updated from the content of the former Google Site and adapted for GitHub Pages.
+  </footer>
 </body>
 </html>
